@@ -27,12 +27,12 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        run: aws ecr get-login-password --region your-region | docker login --username AWS --password-stdin your-account-id.dkr.ecr.your-region.amazonaws.com
+        run: aws ecr get-login-password --region us-east-1 | docker login --username root --password-stdin 493925731629.dkr.ecr.us-east-1.amazonaws.com
 
       - name: Tag Docker image
-        run: docker tag your-image-name:latest your-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:latest
+        run: docker tag react-app:latest 493925731629.dkr.ecr.us-east-1.amazonaws.com/learn-reactapp:latest
 
       - name: Push Docker image to Amazon ECR
-        run: docker push your-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:latest
+        run: docker push 493925731629.dkr.ecr.us-east-1.amazonaws.com/learn-reactapp:latest
 
       # Continue with deploying to Kubernetes using Helm or other methods
