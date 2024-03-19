@@ -42,6 +42,6 @@ jobs:
       run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp
     - name: Build Docker Image
       run: docker build -t react-app:latest .
-      working-directory: build
+      working-directory: .
     - name: Push Docker Image to ECR
       run: docker push 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest
