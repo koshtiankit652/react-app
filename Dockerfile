@@ -1,5 +1,4 @@
-FROM nginx:stable-alpine3.17-slim
-COPY build/* /usr/share/nginx/html
-
-EXPOSE 80 
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:16
+WORKDIR /app
+COPY ./build /app
+CMD [\"node\", \"app.js\"]
