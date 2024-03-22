@@ -1,5 +1,11 @@
+FROM node:16
 
-FROM nginx:alpine
-WORKDIR /app
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
+WORKDIR /usr/src/app
+
+COPY package.json .
+RUN npm install 
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]
