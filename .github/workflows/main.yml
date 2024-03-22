@@ -30,7 +30,7 @@ jobs:
 
   push-to-ecr:
     needs: build
-    runs-on: ubuntu:18
+    runs-on: ubuntu:latest
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
