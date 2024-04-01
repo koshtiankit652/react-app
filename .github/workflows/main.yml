@@ -34,8 +34,8 @@ jobs:
 
     - name: Login to Amazon ECR
       run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp
-    - name: PASSWORD=$(aws ecr get-login-password --region us-east-1) && cat /home/runner/.docker/config.json
-      run: echo $PASSWORD  
+    - name: AWS ECR Password
+      run: PASSWORD=$(aws ecr get-login-password --region us-east-1) && echo $PASSWORD  
     - name: Build Docker Image
       run: docker build -t demoreactapp .
       working-directory: .
