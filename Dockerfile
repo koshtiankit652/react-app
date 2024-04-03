@@ -1,11 +1,17 @@
-FROM node:16
+FROM node:18 as build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 RUN npm install 
 COPY . .
+RUN npm run build
+# Copy the built React app to Nginx's web server directory
+COPY --from=build /app /usr/share/nginx/html
+# Expose port 80 for the Nginx server
+EXPOSE 80
+# Start Nginx when the container runs
+CMD ["nginx", "-g", "daemon off;"]
+# EXPOSE 3000
 
-EXPOSE 3000
-
-CMD ["node", "index.js"]
+# CMD ["node", "index.js"]
