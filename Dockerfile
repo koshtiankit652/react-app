@@ -2,7 +2,7 @@
 FROM node:14 as builder
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to take advantage of Docker layer caching
 COPY package.json package-lock.json ./
@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the built app from the builder stage to NGINX's web root directory
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
