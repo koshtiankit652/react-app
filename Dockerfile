@@ -1,9 +1,9 @@
 FROM node:18
 WORKDIR /app
-
+COPY . .
 COPY package.json ./
 RUN npm install 
-COPY . .
+
 # Build the application
 RUN npm run build
 
@@ -11,7 +11,7 @@ RUN npm run build
 FROM nginx
 
 # Copy the built files from the previous stage
-COPY /app/build /usr/share/nginx/html
+COPY build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
