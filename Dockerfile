@@ -12,9 +12,8 @@ RUN npm run build
 # Start a new stage for the production image
 FROM nginx:alpine
 
-RUN pwd
 # Copy the built files from the previous stage
-COPY --from=base ./build /usr/share/nginx/html
+COPY --from=build ./src/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
