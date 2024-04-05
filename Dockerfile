@@ -8,7 +8,7 @@ COPY . .
 RUN npm run build
 
 # Start a new stage for the production image
-FROM nginx:latest
+FROM nginx
 
 # Copy the built files from the previous stage
 COPY --from=builder /app/build /usr/share/nginx/html
