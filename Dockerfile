@@ -2,9 +2,8 @@ FROM node:18
 WORKDIR /app
 
 COPY package.json ./
-RUN npm install 
 COPY . .
-# Build the application
+RUN npm install 
 RUN npm run build
 
 # Start a new stage for the production image
