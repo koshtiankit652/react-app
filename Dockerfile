@@ -12,6 +12,9 @@ RUN npm run build
 # Start a new stage for the production image
 FROM nginx
 
+# Create directory to hold build artifacts
+RUN mkdir -p /usr/share/nginx/html
+
 # Copy the built files from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html
 
