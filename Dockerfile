@@ -13,7 +13,7 @@ RUN npm run build
 FROM nginx
 
 # Copy the built files from the previous stage
-COPY --from=build build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
