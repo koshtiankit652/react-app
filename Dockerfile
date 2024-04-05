@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY package.json ./
 RUN npm install 
-# COPY . .
+COPY . .
 # Build the application
 RUN npm run build
 
