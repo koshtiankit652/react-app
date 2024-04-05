@@ -12,10 +12,9 @@ RUN npm run build
 # Start a new stage for the production image
 FROM nginx
 
-RUN ls -la && pwd
-
+WORKDIR /app
 # Copy the built files from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
