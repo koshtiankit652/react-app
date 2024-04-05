@@ -12,6 +12,8 @@ RUN npm run build
 # Start a new stage for the production image
 FROM nginx:alpine
 
+WORKDIR /app
+
 # Copy the built files from the previous stage
 COPY build /usr/share/nginx/html
 
