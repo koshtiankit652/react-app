@@ -1,5 +1,5 @@
 FROM node:18
-WORKDIR /app
+WORKDIR /src
 
 COPY package.json .
 
@@ -14,7 +14,7 @@ FROM nginx:alpine
 
 RUN pwd
 # Copy the built files from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=base ./build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
