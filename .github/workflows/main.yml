@@ -46,7 +46,7 @@ jobs:
     #  run: docker tag reactapp:V1.0.0 public.ecr.aws/x1u6d1k2/reactapp
     - name: Push Docker Image to ECR
       env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REGISTRY: public.ecr.aws/x1u6d1k2
         ECR_REPOSITORY: reactapp
         IMAGE_TAG: V1.0.0      
       run: docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
