@@ -34,7 +34,7 @@ jobs:
 
     - name: Login to Amazon ECR
       #run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp
-      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x1u6d1k2/reactapp
+      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
     - name: AWS ECR Password
       run: PASSWORD=$(aws ecr get-login-password --region us-east-1) && echo $PASSWORD  
     - name: Build Docker Image
@@ -45,7 +45,7 @@ jobs:
       run: docker tag demoreactapp:latest public.ecr.aws/x1u6d1k2/reactapp:latest
     - name: Push Docker Image to ECR
       #run: docker push 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest
-      run: docker push public.ecr.aws/x1u6d1k2/reactapp:latest
+      run: docker push public.ecr.aws/x1u6d1k2/demoreactapp:latest
 
 
     # - name: Build, tag, and push image to Amazon ECR
