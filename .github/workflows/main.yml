@@ -41,9 +41,9 @@ jobs:
       #run: docker build -t demoreactapp .
       run: docker build -t reactapp .
       working-directory: .
-    #- name: tagging to image
+    - name: tagging to image
       #run: docker tag demoreactapp:latest 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest  
-    #  run: docker tag reactapp:latest public.ecr.aws/x1u6d1k2/reactapp:latest
+      run: docker tag reactapp:latest public.ecr.aws/x1u6d1k2/reactapp:latest
     - name: Push Docker Image to ECR
       # env:
       #   ECR_REGISTRY: public.ecr.aws/x1u6d1k2
