@@ -33,22 +33,25 @@ jobs:
     #   uses: aws-actions/amazon-ecr-login@v1
 
     - name: Login to Amazon ECR
-      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp
+      #run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp
+      run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x1u6d1k2/reactapp
     - name: AWS ECR Password
       run: PASSWORD=$(aws ecr get-login-password --region us-east-1) && echo $PASSWORD  
     - name: Build Docker Image
       run: docker build -t demoreactapp .
       working-directory: .
     - name: tagging to image
-      run: docker tag demoreactapp:latest 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest  
+      #run: docker tag demoreactapp:latest 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest  
+      run: docker tag demoreactapp:latest public.ecr.aws/x1u6d1k2/reactapp:latest
     - name: Push Docker Image to ECR
-      run: docker push 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest
+      #run: docker push 952528942962.dkr.ecr.us-east-1.amazonaws.com/demoreactapp:latest
+      run: docker push public.ecr.aws/x1u6d1k2/reactapp:latest
 
 
     # - name: Build, tag, and push image to Amazon ECR
     #   env:
     #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    #     ECR_REPOSITORY: demoreactapp
+    #     ECR_REPOSITORY: reactapp
     #     IMAGE_TAG: latest
     #   run: |
     #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
