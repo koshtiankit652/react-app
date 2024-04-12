@@ -8,7 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Hello Guys this is react-app.
-          Hello Guys this is testing by K8S CICD
+          Hello Guys this is testing by K8S CICD\nHello Image latest issue resolved
         </p>
         <a
           className="App-link"
